@@ -3,7 +3,7 @@
   "license": "MIT",
   "keywords": ["backend", "database", "sql", "orm"],
   "require": {
-    "maboiteaspam/sep": "master",
+    "maboiteaspam/sep": "dev-master",
     "codeception/codeception": "2.0.*@dev"
   },
   "repositories": [
