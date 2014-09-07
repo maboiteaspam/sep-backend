@@ -1,0 +1,20 @@
+<? return [
+    "dev"=>[
+        "user_languages"=>[
+            "en",
+            "fr",
+            "debug",
+        ],
+        "db"=>[
+            /*
+             "username"=>"",
+             "password"=>"",
+             "driver_options"=>"",
+             "error_mode"=>"",
+             "identifier_quote_character"=>"",
+             "limit_clause_style"=>"",
+             */
+            "connection_string"=>"sqlite:".__DIR__."/db/data/example.db",
+        ],
+    ],
+];
