@@ -9,7 +9,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/maboiteaspam/sep"
+      "url": "git@github.com/maboiteaspam/sep.git"
     }
   ],
   "minimum-stability": "dev"
