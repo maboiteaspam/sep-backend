@@ -8,28 +8,32 @@
 // declare globals
 //----------------
 $env = null;
-$vendors_path = __DIR__."/../vendors";
 
 // # library loading
 
 // autoloader
 //----------------
-/* @var $auto_loader callback */
-$auto_loader = require("$vendors_path/Sep/Sep.php");
+/* @var $auto_loader \Composer\Autoload\ClassLoader */
+$auto_loader = require(__DIR__."/../vendor/autoload.php");
 
-// vendors
+
+// config
 //----------------
-require("$vendors_path/Slim-2.4.3/Slim/Slim.php");
-require("$vendors_path/idiorm-1.4.1/idiorm.php");
-require("$vendors_path/paris-1.4.2/paris.php");
-require("$vendors_path/PHPExcel_1.8.0/Classes/PHPExcel.php");
-spl_autoload_register($auto_loader("$vendors_path/Sep/"));
-spl_autoload_register($auto_loader("$vendors_path/Validation/library/"));
-\Slim\Slim::registerAutoloader();
+$model_paths = [
+    __DIR__."/../db/Models/",
+    $auto_loader->getPrefixes()["Sep"][0]."/db/Models/"
+];
+$config_paths = [
+    $auto_loader->getPrefixes()["Sep"][0],
+    __DIR__."/..",
+    __DIR__,
+];
 
 // app specific
 //----------------
-spl_autoload_register($auto_loader(__DIR__."/../db/Models/"));
+foreach($model_paths as $m ){
+    $auto_loader->add("",$m);
+}
 
 // Detect environment
 //----------------
@@ -43,14 +47,14 @@ $backend = new \Sep\Bootstrap\Backend();
 //----------------
 // opens session
 // configure db/orm
-$backend->init($env,["$vendors_path/Sep/",__DIR__."/..",__DIR__]);
+$backend->init($env,$config_paths);
 
 // Set internationalization
 //----------------
 // load user languages from config
 // load preferred language from cookie
 // fallback to first user languages
-$backend->load_intl_messages($dirs=[],$language=null);
+$backend->load_intl_messages($language=null);
 
 // render app
 //----------------

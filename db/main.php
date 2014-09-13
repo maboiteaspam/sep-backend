@@ -9,27 +9,38 @@
 $env = null;
 $config = null;
 $app = null;
-$vendors_path = __DIR__."/../vendors";
-$models_path = __DIR__."/Models/";
 
 // # library loading
 
 // autoloader
 //----------------
-/* @var $auto_loader callback */
-$auto_loader = require("$vendors_path/Sep/Sep.php");
+/* @var $auto_loader \Composer\Autoload\ClassLoader */
+$auto_loader = require(__DIR__."/../vendor/autoload.php");
 
-// vendors
+
+// config
 //----------------
-require("$vendors_path/idiorm-1.4.1/idiorm.php");
-require("$vendors_path/paris-1.4.2/paris.php");
-require("$vendors_path/Illuminate-database/Illuminate/Support/helpers.php");
-spl_autoload_register($auto_loader("$vendors_path/Illuminate-database/"));
-spl_autoload_register($auto_loader("$vendors_path/Sep/"));
+$model_paths = [
+    __DIR__."/../db/Models/",
+    $auto_loader->getPrefixes()["Sep"][0]."/db/Models/"
+];
+$fixture_paths = [
+    __DIR__."/../db/Fixtures/",
+    $auto_loader->getPrefixes()["Sep"][0]."/db/Fixtures/"
+];
+$config_paths = [
+    $auto_loader->getPrefixes()["Sep"][0],
+    __DIR__."/..",
+    __DIR__,
+];
+
+
 
 // app specific
 //----------------
-spl_autoload_register($auto_loader($models_path));
+foreach($model_paths as $m ){
+    $auto_loader->add("",$m);
+}
 
 // # Configure and initialize
 
@@ -44,23 +55,23 @@ $cli = new \Sep\Bootstrap\Cli();
 // Load the configuration
 //----------------
 // configure db/orm
-$cli->init($env,["$vendors_path/Sep/",__DIR__."/..",__DIR__]);
+$cli->init($env,$config_paths);
 
 // # run application
 
 // create schema
 //----------------
 if( $cli->action == "schema" ){
-    $cli->setupSchema($models_path);
+    $cli->setupSchema($model_paths,__DIR__."/schema/");
 
 // create fixtures
 //----------------
 }else if( $cli->action == "fixtures" ){
-    $cli->setupFixtures();
+    $cli->setupFixtures($fixture_paths);
 
 // make a dump of your database
 //----------------
 }else if( $cli->action == "dump" ){
-    $cli->createDump($models_path);
+    $cli->createDump($model_paths);
 }
 

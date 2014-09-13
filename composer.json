@@ -1,29 +1,31 @@
 {
-  "name": "maboiteaspam/sep-backend",
-  "license": "MIT",
+    "name": "maboiteaspam/sep-backend",
+    "license": "MIT",
     "description": " is missing ",
-  "keywords": ["backend", "database", "sql", "orm"],
-  "require": {
-    "maboiteaspam/sep": "1.0.0",
-    "codeception/codeception": "2.0.*"
-  },
+    "keywords": ["backend", "database", "sql", "orm"],
+    "require": {
+        "maboiteaspam/sep": "dev-master",
+        "illuminate/database": "4.2.*",
+        "phpoffice/phpexcel": "1.8.*",
+        "slim/slim": "2.4.*",
+        "Respect/Validation": "0.7.*@dev"
+    },
+    "require-dev": {
+        "codeception/codeception": "2.0.*"
+    },
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "maboiteaspam/sep",
-                "version": "1.0.0",
-                "dist": {
-                    "url": "https://github.com/maboiteaspam/sep/zipball/master",
-                    "type": "zip"
-                },
-                "source": {
-                    "url": "https://github.com/maboiteaspam/sep.git",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
+            "type": "vcs",
+            "url": "https://github.com/maboiteaspam/sep.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/maboiteaspam/idiorm.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/maboiteaspam/paris.git"
         }
     ],
-  "minimum-stability": "dev"
+    "minimum-stability": "dev"
 }

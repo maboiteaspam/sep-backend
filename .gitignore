@@ -1,4 +1,7 @@
 .idea
+composer.lock
+vendor/
 db/data
+db/schema
 tests/_output/*
 tests/_data/*
