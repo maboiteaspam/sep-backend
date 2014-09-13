@@ -1,16 +1,29 @@
 {
   "name": "maboiteaspam/sep-backend",
   "license": "MIT",
+    "description": " is missing ",
   "keywords": ["backend", "database", "sql", "orm"],
   "require": {
-    "maboiteaspam/sep": "dev-master",
+    "maboiteaspam/sep": "1.0.0",
     "codeception/codeception": "2.0.*"
   },
-  "repositories": [
-    {
-        "type": "git",
-        "url": "https://github.com/maboiteaspam/sep"
-    }
-  ],
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "maboiteaspam/sep",
+                "version": "1.0.0",
+                "dist": {
+                    "url": "https://github.com/maboiteaspam/sep/zipball/static",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/maboiteaspam/sep.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
   "minimum-stability": "dev"
 }
