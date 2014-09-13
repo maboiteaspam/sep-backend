@@ -1,8 +1,12 @@
 <? return [
-    "dev"=>[
+    "distrib"=>[
         "user_languages"=>[
             "en",
             "fr",
+        ],
+    ],
+    "dev"=>[
+        "user_languages"=>[
             "debug",
         ],
         "db"=>[
