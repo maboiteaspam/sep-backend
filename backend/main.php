@@ -50,8 +50,7 @@ $backend->init($env,["$vendors_path/Sep/",__DIR__."/..",__DIR__]);
 // load user languages from config
 // load preferred language from cookie
 // fallback to first user languages
-$user_language = $backend->get_user_language();
-$backend->load_intl_messages($user_language);
+$backend->load_intl_messages($dirs=[],$language=null);
 
 // render app
 //----------------
