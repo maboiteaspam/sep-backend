@@ -56,7 +56,7 @@ $backend->init($env,$config_paths);
 // fallback to first user languages
 $backend->load_intl_messages($language=null);
 
-// render app
+// initialize app
 //----------------
 // load view models
 // create layout renderer
