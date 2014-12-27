@@ -36,3 +36,29 @@ browse the backend
 ```
 http://[hash provided by koding].[username].koding.io:8000/login
 ```
+
+Login with admin:admin
+
+To add new entities, check out
+```
+https://github.com/maboiteaspam/Sep/tree/master/db/Models
+https://github.com/maboiteaspam/Sep/tree/master/db/Fixtures
+https://github.com/maboiteaspam/Sep/tree/master/backend/view_models
+```
+
+Push your owns, overwrite existing entities into project folders
+```
+backend/view_models
+db/Models
+db/Fixtures
+```
+
+Do various stuff with your database with
+```
+bin/schema_db.sh
+bin/fixtures_db.sh
+bin/dump.sh
+bin/db.sh
+```
+
+Add more tests via Codeception
